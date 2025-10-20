@@ -19,7 +19,7 @@ jobs:
       - uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_LOGIN: "admin"
-          SONAR_PASSWORD: "Sonar123456!
+          SONAR_PASSWORD: "Sonar123456!"
           # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       - name: Display repository link
