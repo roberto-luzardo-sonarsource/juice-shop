@@ -5,6 +5,7 @@ on:
       - l10n_develop
       - gh-pages
       - main
+      - master
     paths-ignore:
       - '*.md'
       - 'LICENSE'
