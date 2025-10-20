@@ -4,6 +4,7 @@ on:
     branches-ignore:
       - l10n_develop
       - gh-pages
+      - main
     paths-ignore:
       - '*.md'
       - 'LICENSE'
