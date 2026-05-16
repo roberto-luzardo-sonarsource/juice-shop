@@ -91,7 +91,7 @@ export class PaymentComponent implements OnInit {
     this.walletService.get().subscribe({
       next: (balance) => {
         this.walletBalance = balance
-        this.walletBalanceStr = parseFloat(balance).toFixed(2)
+        this.walletBalanceStr = Number.parseFloat(balance).toFixed(2)
       },
       error: (err) => { console.log(err) }
     })
@@ -121,7 +121,7 @@ export class PaymentComponent implements OnInit {
       next: (paramMap: ParamMap) => {
         this.mode = paramMap.get('entity')
         if (this.mode === 'wallet') {
-          this.totalPrice = parseFloat(sessionStorage.getItem('walletTotal'))
+          this.totalPrice = Number.parseFloat(sessionStorage.getItem('walletTotal'))
         } else if (this.mode === 'deluxe') {
           this.userService.deluxeStatus().subscribe({
             next: (res) => {
@@ -130,8 +130,8 @@ export class PaymentComponent implements OnInit {
             error: (err) => { console.log(err) }
           })
         } else {
-          const itemTotal = parseFloat(sessionStorage.getItem('itemTotal'))
-          const promotionalDiscount = sessionStorage.getItem('couponDiscount') ? (parseFloat(sessionStorage.getItem('couponDiscount')) / 100) * itemTotal : 0
+          const itemTotal = Number.parseFloat(sessionStorage.getItem('itemTotal'))
+          const promotionalDiscount = sessionStorage.getItem('couponDiscount') ? (Number.parseFloat(sessionStorage.getItem('couponDiscount')) / 100) * itemTotal : 0
           this.deliveryService.getById(sessionStorage.getItem('deliveryMethodId')).subscribe((method) => {
             const deliveryPrice = method.price
             this.totalPrice = itemTotal + deliveryPrice - promotionalDiscount
