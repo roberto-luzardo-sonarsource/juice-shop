@@ -114,7 +114,7 @@ export class WalletWeb3Component {
       if (isConnected) {
         await disconnect()
       }
-      if (!window.ethereum) {
+      if (!globalThis.ethereum) {
         this.snackBarHelperService.open('PLEASE_INSTALL_WEB3_WALLET', 'errorBar')
         return
       }
